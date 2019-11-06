@@ -1,0 +1,85 @@
+#pragma once
+#ifndef D3DAPP_H
+#define D3DAPP_H
+
+#include "D3DUtils.h"
+#include "GameTimer.h"
+#include <Windows.h>
+#include <windowsx.h>
+#include <string>
+
+class D3DApp {
+public:
+	D3DApp(HINSTANCE hInstance);
+	virtual ~D3DApp();
+
+	// 获得这个d3d程序的句柄
+	HINSTANCE AppInst() const;	
+	// 获得窗口句柄
+	HWND MainWnd() const;
+	// 获得窗口比例
+	float AspectRatio() const;
+
+	int Run();
+
+	virtual bool Init();
+	virtual void OnResize();
+	virtual void UpdateScene(float deltaTime = 0) {}
+	virtual void DrawScene()=0;
+	// 窗口过程函数,用于处理各类消息
+	virtual LRESULT MsgProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam);
+
+	// 用于处理鼠标事件
+	virtual void OnMouseDown(WPARAM btnState, int x, int y) {}
+	virtual void OnMouseUp(WPARAM btnState, int x, int y) {}
+	virtual void OnMouseMove(WPARAM btnState, int x, int y) {}
+
+protected:
+	// 初始化Windows窗口
+	bool InitMainWindow();
+	// 初始化D3D程序
+	bool InitDirect3D();
+
+	void CalculateFrameState();
+
+protected:
+	// 应用程序实例句柄
+	HINSTANCE mhAppInst;
+	// 主窗口句柄
+	HWND mhMainWnd;	
+	// 程序是否处于暂停状态
+	bool mAppPaused;
+	// 程序是否最小化最大化
+	bool mMinimized;
+	bool mMaximized;
+	// 程序是否处于在改变大小的状态
+	bool mResizing;
+
+	// 4x msaa的质量等级
+	UINT m4xMessQuality;
+
+	// 用于记录deltaTime的计时器类
+	GameTimer timer;
+
+protected:
+	// d3d设备
+	ID3D11Device* md3dDevice;
+	ID3D11DeviceContext* md3dImmediateContext;
+	IDXGISwapChain* mSwapChain;
+	ID3D11Texture2D* mDepthStencilBuffer;
+	ID3D11RenderTargetView* mRenderTargetView;
+	ID3D11DepthStencilView* mDepthStencilView;
+	D3D11_VIEWPORT mScreenViewport;
+
+	D3D_DRIVER_TYPE md3dDriverType;
+
+	int mClientWidth;
+	int mClientHeight;
+
+	bool mEnable4xMsaa;
+
+	// 窗口名
+	std::wstring mMainWndCaption = L"Learning D3D";
+};
+
+#endif // !D3DAPP_H
