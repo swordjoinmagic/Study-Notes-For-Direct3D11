@@ -10,6 +10,7 @@ public:
 	//bool Init() override;
 	void OnResize() override;
 	void UpdateScene(float deltaTime) override;
-	void DrawScene() override;
+	void Render() override;
+	void OnStart() override;
 };
 

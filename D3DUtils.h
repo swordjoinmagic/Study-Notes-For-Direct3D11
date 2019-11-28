@@ -5,6 +5,16 @@
 #include <dxerr.h>
 #include <xnamath.h>
 #include <vector>
+#include <d3dx11effect.h>
+
+
+typedef XMFLOAT2 float2;
+typedef XMFLOAT3 float3;
+typedef XMFLOAT4 float4;
+typedef XMFLOAT4X4 float4x4;
+typedef XMCOLOR Color;
+typedef UINT uint;
+
 
 #ifndef HR
 #define HR(x) {\

@@ -3,10 +3,9 @@
 #include <string>
 #include <assert.h>
 
-// 处理
+// 为了设置窗口的回调函数,消息处理函数
+// 用到的全局变量
 namespace {
-	// 为了设置窗口的回调函数,消息处理函数
-	// 用到的全局变量
 	D3DApp* gd3dApp = 0;
 }
 LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
@@ -338,7 +337,22 @@ bool D3DApp::Init() {
 		return false;
 	if (!InitDirect3D())
 		return false;
+
+	OnStart();
+
 	return true;
+}
+
+void D3DApp::DrawScene() {
+	// 清屏为蓝色
+	md3dImmediateContext->ClearRenderTargetView(mRenderTargetView, reinterpret_cast<const float*>(&Colors::Black));
+	// 清除深度和模板缓冲
+	md3dImmediateContext->ClearDepthStencilView(mDepthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0, 0);
+
+	Render();
+
+	// 交换双缓冲
+	HR(mSwapChain->Present(0, 0));
 }
 
 // 执行消息循环和游戏循环
@@ -356,10 +370,16 @@ int D3DApp::Run() {
 			// 计算deltaTime
 			timer.Tick();
 			if (!mAppPaused) {
+
 				// 计算帧率
 				CalculateFrameState();
+
+				// 更新场景逻辑
 				UpdateScene(timer.DeltaTime());
+
+				// 渲染场景
 				DrawScene();
+
 			} else {
 				Sleep(100);
 			}

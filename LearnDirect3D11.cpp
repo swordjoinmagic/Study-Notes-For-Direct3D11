@@ -5,15 +5,15 @@
 #include "LearnDirect3D11.h"
 #include "D3DUtils.h"
 #include "InitDirect3DApp.h"
-
+#include "Sample1_DrawBox.h"
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
 {	
-	InitDirect3DApp theApp(hInstance);
-
+	Sample1 theApp(hInstance);
+	
 	if (!theApp.Init())
 		return 0;
 

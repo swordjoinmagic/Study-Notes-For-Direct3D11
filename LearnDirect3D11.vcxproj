@@ -72,9 +72,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\DirectxSDK\SDKSource\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\DirectxSDK\SDKSource\Lib\x86;$(LibraryPath)</LibraryPath>
-    <ExecutablePath>D:\DirectxSDK\SDKSource\Utilities\bin\x86;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>D:\DirectxSDK\SDKSource\Include;D:\DirectxSDK\SDKSource\Effect;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\DirectxSDK\SDKSource\Lib\x86;D:\DirectxSDK\SDKSource\Effect;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>D:\DirectxSDK\SDKSource\Utilities\bin\x86;D:\DirectxSDK\SDKSource\Effect;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -97,7 +97,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;legacy_stdio_definitions.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Effects11.lib;d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;legacy_stdio_definitions.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,6 +157,7 @@
     <ClInclude Include="InitDirect3DApp.h" />
     <ClInclude Include="LearnDirect3D11.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Sample1_DrawBox.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -165,6 +166,7 @@
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InitDirect3DApp.cpp" />
     <ClCompile Include="LearnDirect3D11.cpp" />
+    <ClCompile Include="Sampel1_DrawBoxcpp.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -178,6 +180,14 @@
   <ItemGroup>
     <Image Include="LearnDirect3D11.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\test1.fx">
+      <FileType>Document</FileType>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</AdditionalOptions>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\%(Filename).fxo" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\%(Filename).fxo;%(Outputs)</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

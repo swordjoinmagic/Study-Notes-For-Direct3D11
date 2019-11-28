@@ -31,6 +31,9 @@
     <Filter Include="源文件\Sample">
       <UniqueIdentifier>{b8a0b9f5-546e-4157-94f5-bbc048fadd12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{b9f08cc0-11a1-48b5-8530-b9c63fe27136}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -57,6 +60,9 @@
     <ClInclude Include="InitDirect3DApp.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample1_DrawBox.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -74,6 +80,9 @@
     <ClCompile Include="InitDirect3DApp.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sampel1_DrawBoxcpp.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearnDirect3D11.rc">
@@ -87,5 +96,10 @@
     <Image Include="LearnDirect3D11.ico">
       <Filter>资源文件</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\test1.fx">
+      <Filter>Shader</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

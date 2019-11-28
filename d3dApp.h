@@ -22,10 +22,21 @@ public:
 
 	int Run();
 
+	// 初始化窗口和D3D上下文
 	virtual bool Init();
+
+	// 当窗口改变时,自动引用分辨率改变的模板/深度缓冲区
 	virtual void OnResize();
+
+	// 用于更新场景逻辑(位移/碰撞检测等)
 	virtual void UpdateScene(float deltaTime = 0) {}
-	virtual void DrawScene()=0;
+
+	// 初始化该d3dApp的方法,一般用于初始化模型,顶点结构,着色器等
+	virtual void OnStart() = 0;
+
+	// 绘制场景(即用于渲染的函数)
+	virtual void Render() = 0;
+
 	// 窗口过程函数,用于处理各类消息
 	virtual LRESULT MsgProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam);
 
@@ -39,9 +50,8 @@ protected:
 	bool InitMainWindow();
 	// 初始化D3D程序
 	bool InitDirect3D();
-
 	void CalculateFrameState();
-
+	void DrawScene();
 protected:
 	// 应用程序实例句柄
 	HINSTANCE mhAppInst;
