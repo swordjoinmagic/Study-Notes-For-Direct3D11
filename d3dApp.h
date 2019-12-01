@@ -2,6 +2,7 @@
 #ifndef D3DAPP_H
 #define D3DAPP_H
 
+#include "stdafx.h"
 #include "D3DUtils.h"
 #include "GameTimer.h"
 #include <Windows.h>
@@ -44,7 +45,13 @@ public:
 	virtual void OnMouseDown(WPARAM btnState, int x, int y) {}
 	virtual void OnMouseUp(WPARAM btnState, int x, int y) {}
 	virtual void OnMouseMove(WPARAM btnState, int x, int y) {}
-
+	// 用于处理基本方向键的键盘事件
+	virtual void OnUpKeyDown(WPARAM keyState) {}
+	virtual void OnDownKeyDown(WPARAM keyState) {}
+	virtual void OnLeftKeyDown(WPARAM keyState) {}
+	virtual void OnRightKeyDown(WPARAM keyState) {}
+	// 处理任意键盘事件
+	virtual void OnKeyDown(WPARAM keyState) {};
 protected:
 	// 初始化Windows窗口
 	bool InitMainWindow();

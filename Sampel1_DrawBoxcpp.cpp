@@ -118,11 +118,13 @@ void Sample1::OnStart() {
 		{"POSITION", 0  ,DXGI_FORMAT_R32G32B32_FLOAT,   0   , 0 ,	D3D11_INPUT_PER_VERTEX_DATA,0},
 		{"COLOR",0,DXGI_FORMAT_R32G32B32A32_FLOAT,0,12,D3D11_INPUT_PER_VERTEX_DATA,0}
 	};
+
+
 	// 创建顶点输入布局
 	D3DX11_PASS_DESC passDesc;
 	mTech->GetPassByIndex(0)->GetDesc(&passDesc);
 	HR(md3dDevice->CreateInputLayout(vertexDesc,2,passDesc.pIAInputSignature,passDesc.IAInputSignatureSize,&mInputLayout));
-
+	
 }
 
 void Sample1::UpdateScene(float deltaTime) {
@@ -169,5 +171,5 @@ void Sample1::Render() {
 		md3dImmediateContext->DrawIndexed(36,0,0);
 	}
 
-	md3dImmediateContext->vsset
+	
 }

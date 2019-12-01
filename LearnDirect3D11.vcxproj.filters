@@ -34,6 +34,12 @@
     <Filter Include="Shader">
       <UniqueIdentifier>{b9f08cc0-11a1-48b5-8530-b9c63fe27136}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample1 DrawBox">
+      <UniqueIdentifier>{5082e901-bbce-4c5b-ab03-7fd132ba518b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Sample2 DrawHils">
+      <UniqueIdentifier>{fc640ccc-d728-4eac-ad21-79788d611575}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -63,6 +69,15 @@
     <ClInclude Include="Sample1_DrawBox.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample2_DrawHils.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryGenerator.h">
+      <Filter>头文件\d3dFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件\d3dFramework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -83,6 +98,12 @@
     <ClCompile Include="Sampel1_DrawBoxcpp.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="D3DUtils.cpp">
+      <Filter>源文件\d3dFramework</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample2_DrawHils.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LearnDirect3D11.rc">
@@ -101,5 +122,16 @@
     <CustomBuild Include="Shader\test1.fx">
       <Filter>Shader</Filter>
     </CustomBuild>
+    <CustomBuild Include="Shader\Sample1 DrawBox\test1.fx">
+      <Filter>Shader\Sample2 DrawHils</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\Sample1 DrawBox\drawBox.fs">
+      <Filter>Shader\Sample1 DrawBox</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\Sample1 DrawBox\drawBox.vs">
+      <Filter>Shader\Sample1 DrawBox</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

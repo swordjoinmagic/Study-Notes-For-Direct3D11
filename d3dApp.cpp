@@ -80,8 +80,8 @@ void D3DApp::CalculateFrameState() {
 		std::wstring fpsStr = std::to_wstring(fps);
 		std::wstring mspfStr = std::to_wstring(mspf);
 
-		std::wstring windowText = L"	fps: " + fpsStr +
-			L"	mspf: " + mspfStr+L"(ms)";
+		std::wstring windowText = L"   fps: " + fpsStr +
+			L"    mspf: " + mspfStr+L"(ms)";
 		SetWindowText(mhMainWnd,windowText.c_str());
 
 		frameCnt = 0;
@@ -138,6 +138,28 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	case WM_MOUSEMOVE:
 		OnMouseMove(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 		return 0;
+	case WM_KEYDOWN:
+		switch (wParam) {
+		case VK_LEFT:
+			// ¡û¼ü
+			OnLeftKeyDown(wParam);
+			break;
+		case VK_RIGHT:
+			// ¡ú¼ü
+			OnRightKeyDown(wParam);
+			break;
+		case VK_UP:
+			// ¡ü¼ü
+			OnUpKeyDown(wParam);
+			break;
+		case VK_DOWN:
+			// ¡ý¼ü
+			OnDownKeyDown(wParam);
+			break;
+		default:
+			OnKeyDown(wParam);
+			break;
+		}
 	}
 
 	return DefWindowProc(hwnd,msg,wParam,lParam);

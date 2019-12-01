@@ -6,7 +6,9 @@
 #include <xnamath.h>
 #include <vector>
 #include <d3dx11effect.h>
-
+#include <string>
+#include <sstream>
+#include <fstream>
 
 typedef XMFLOAT2 float2;
 typedef XMFLOAT3 float3;
@@ -42,3 +44,6 @@ namespace Colors {
 	XMGLOBALCONST XMVECTORF32 Silver = { 0.75f, 0.75f, 0.75f, 1.0f };
 	XMGLOBALCONST XMVECTORF32 LightSteelBlue = { 0.69f, 0.77f, 0.87f, 1.0f };
 }
+
+ID3DBlob* LoadCompiledShaderFromFile(const std::wstring& fileName);
+std::vector<char> LoadCompiledEffectFile(const std::wstring& fileName, int& size);
