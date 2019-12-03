@@ -1,5 +1,8 @@
-#include "stdafx.h"
 #include "Sample1_DrawBox.h"
+#include "Camera.h"
+#include <cstdio>
+
+using namespace SJM;
 
 float angle = 0;
 
@@ -21,6 +24,8 @@ Sample1::~Sample1() {
 
 
 void Sample1::OnStart() {
+
+	camera = std::make_shared<SJM::Camera>(float3(0,0,-5),float3(0,0,0),AspectRatio());
 
 	//==========================================
 	// ³õÊ¼»¯¶¥µã»º³å
@@ -129,16 +134,20 @@ void Sample1::OnStart() {
 
 void Sample1::UpdateScene(float deltaTime) {
 
+	printf("forward:(%f,%f,%f)",camera->forward.x, camera->forward.y, camera->forward.z);
+
 	angle += deltaTime;
 
 	XMVECTOR pos = XMVectorSet(0,0,-5,1.0f);
 	XMVECTOR target = XMVectorZero();
 	XMVECTOR up = XMVectorSet(0,1.0f,0,0);
 
-	XMMATRIX V = XMMatrixLookAtLH(pos,target,up);
+	//XMMATRIX V = XMMatrixLookAtLH(pos,target,up);
+	XMMATRIX V = camera->GetViewMatrix();
 	XMStoreFloat4x4(&mView,V);
 
-	XMMATRIX P = XMMatrixPerspectiveFovLH(0.25f*3.1415926f,AspectRatio(),1.0f,10.0f);
+	//XMMATRIX P = XMMatrixPerspectiveFovLH(0.25f*3.1415926f,AspectRatio(),1.0f,10.0f);
+	XMMATRIX P = camera->GetProjMatrix();
 	XMStoreFloat4x4(&mProj,P);
 
 	XMMATRIX M = XMMatrixRotationX(angle)*XMMatrixRotationY(angle)*XMMatrixRotationZ(angle);

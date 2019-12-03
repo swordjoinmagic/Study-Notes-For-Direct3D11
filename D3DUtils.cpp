@@ -1,7 +1,6 @@
-#include "stdafx.h"
 #include "D3DUtils.h"
 #include <D3Dcompiler.h>
-
+#include "MathF.h"
 
 ID3DBlob* LoadCompiledShaderFromFile(const std::wstring& fileName) {
 	std::ifstream fin(fileName, std::ios::binary);

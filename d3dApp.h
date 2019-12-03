@@ -2,12 +2,12 @@
 #ifndef D3DAPP_H
 #define D3DAPP_H
 
-#include "stdafx.h"
 #include "D3DUtils.h"
 #include "GameTimer.h"
 #include <Windows.h>
 #include <windowsx.h>
 #include <string>
+#include "Camera.h"
 
 class D3DApp {
 public:
@@ -15,7 +15,7 @@ public:
 	virtual ~D3DApp();
 
 	// 获得这个d3d程序的句柄
-	HINSTANCE AppInst() const;	
+	HINSTANCE AppInst() const;
 	// 获得窗口句柄
 	HWND MainWnd() const;
 	// 获得窗口比例
@@ -39,19 +39,14 @@ public:
 	virtual void Render() = 0;
 
 	// 窗口过程函数,用于处理各类消息
-	virtual LRESULT MsgProc(HWND hwnd,UINT msg,WPARAM wParam,LPARAM lParam);
+	virtual LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	// 用于处理鼠标事件
 	virtual void OnMouseDown(WPARAM btnState, int x, int y) {}
 	virtual void OnMouseUp(WPARAM btnState, int x, int y) {}
-	virtual void OnMouseMove(WPARAM btnState, int x, int y) {}
-	// 用于处理基本方向键的键盘事件
-	virtual void OnUpKeyDown(WPARAM keyState) {}
-	virtual void OnDownKeyDown(WPARAM keyState) {}
-	virtual void OnLeftKeyDown(WPARAM keyState) {}
-	virtual void OnRightKeyDown(WPARAM keyState) {}
+	virtual void OnMouseMove(WPARAM btnState, int x, int y);
 	// 处理任意键盘事件
-	virtual void OnKeyDown(WPARAM keyState) {};
+	virtual void ProcessKeyBoardInput();
 protected:
 	// 初始化Windows窗口
 	bool InitMainWindow();
@@ -59,6 +54,9 @@ protected:
 	bool InitDirect3D();
 	void CalculateFrameState();
 	void DrawScene();
+
+	// 清除控制台信息
+	void ClearConsoleDebugInformation();
 protected:
 	// 应用程序实例句柄
 	HINSTANCE mhAppInst;
@@ -97,6 +95,13 @@ protected:
 
 	// 窗口名
 	std::wstring mMainWndCaption = L"Learning D3D";
+
+protected:
+	// 处理摄像机与鼠标移动
+	int lastX=0, lastY=0;
+	bool firstMouse = true;
+	std::shared_ptr<SJM::Camera> camera;
+
 };
 
 #endif // !D3DAPP_H

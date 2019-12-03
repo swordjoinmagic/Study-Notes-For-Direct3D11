@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "d3dApp.h"
 #include <string>
 #include <assert.h>
@@ -138,28 +137,6 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	case WM_MOUSEMOVE:
 		OnMouseMove(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 		return 0;
-	case WM_KEYDOWN:
-		switch (wParam) {
-		case VK_LEFT:
-			// ←键
-			OnLeftKeyDown(wParam);
-			break;
-		case VK_RIGHT:
-			// →键
-			OnRightKeyDown(wParam);
-			break;
-		case VK_UP:
-			// ↑键
-			OnUpKeyDown(wParam);
-			break;
-		case VK_DOWN:
-			// ↓键
-			OnDownKeyDown(wParam);
-			break;
-		default:
-			OnKeyDown(wParam);
-			break;
-		}
 	}
 
 	return DefWindowProc(hwnd,msg,wParam,lParam);
@@ -178,6 +155,8 @@ bool D3DApp::InitMainWindow() {
 	wc.hbrBackground = (HBRUSH)GetStockObject(NULL_BRUSH);
 	wc.lpszMenuName = 0;
 	wc.lpszClassName = L"D3DWndClassName";
+
+	
 
 	if (!RegisterClass(&wc)) {
 		MessageBox(0,L"注册窗口失败",0,0);
@@ -393,8 +372,14 @@ int D3DApp::Run() {
 			timer.Tick();
 			if (!mAppPaused) {
 
+				// 清除控制台调试信息
+				ClearConsoleDebugInformation();
+
 				// 计算帧率
 				CalculateFrameState();
+
+				// 处理输入
+				ProcessKeyBoardInput();
 
 				// 更新场景逻辑
 				UpdateScene(timer.DeltaTime());
@@ -411,3 +396,49 @@ int D3DApp::Run() {
 	return (int)msg.wParam;
 }
 
+// 处理摄像机以及他的移动事件
+void D3DApp::ProcessKeyBoardInput() {
+
+	if (camera) {
+		short shiftState = GetAsyncKeyState(VK_SHIFT);
+		if (shiftState<0)
+			camera->MovementSpeed += 10.0f*timer.DeltaTime();
+		else if(shiftState==0)
+			camera->MovementSpeed = SJM::SPEED;
+
+		if (GetAsyncKeyState(VK_KEY_A) < 0)
+			camera->ProcessKeyBoard(SJM::CameraMovement::LEFT, timer.DeltaTime());
+		if (GetAsyncKeyState(VK_KEY_W) < 0) {
+			camera->ProcessKeyBoard(SJM::CameraMovement::FORWAD, timer.DeltaTime());		
+		}
+		if (GetAsyncKeyState(VK_KEY_D)<0)
+			camera->ProcessKeyBoard(SJM::CameraMovement::RIGHT, timer.DeltaTime());
+		if (GetAsyncKeyState(VK_KEY_S)<0)
+			camera->ProcessKeyBoard(SJM::CameraMovement::BACKWARD, timer.DeltaTime());
+	}
+}
+
+void D3DApp::OnMouseMove(WPARAM btnState, int x, int y) {
+	if (GetKeyState(VK_RBUTTON) < 0) {
+		if (firstMouse) {
+			lastX = x;
+			lastY = y;
+			firstMouse = false;
+		}
+		float xOffset = lastX - x;
+		float yOffset = lastY - y;
+
+		lastX = x;
+		lastY = y;
+
+		camera->ProcessMouseMovement(xOffset,yOffset);
+	} else {
+		lastX = x;
+		lastY = y;
+		firstMouse = false;
+	}
+}
+
+void D3DApp::ClearConsoleDebugInformation() {
+	system("cls");
+}

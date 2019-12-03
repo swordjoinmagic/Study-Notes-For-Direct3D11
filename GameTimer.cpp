@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "GameTimer.h"
 
 // 构造函数用于查询性能计数器的频率

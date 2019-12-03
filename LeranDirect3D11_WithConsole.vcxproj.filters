@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\d3dFrameWork">
+      <UniqueIdentifier>{e3619af8-ef09-4d71-b8b2-241788e2d3c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Sample">
+      <UniqueIdentifier>{4aa79f76-4854-468f-87a9-608cdf5e47c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Utils">
+      <UniqueIdentifier>{ffce7c68-99df-4d7c-9776-df6dfd7788f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Component">
+      <UniqueIdentifier>{736cd1aa-e3a3-4b90-bb99-0810ebae4fad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\d3dFrameWork">
+      <UniqueIdentifier>{15b68956-cf95-4df5-92cd-2f3df76737d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Sample">
+      <UniqueIdentifier>{efc07311-a299-46c8-8419-27ae3576a26a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Component">
+      <UniqueIdentifier>{065b8e9c-9de2-4a8a-8b83-db046228e8fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Utils">
+      <UniqueIdentifier>{72923a0d-a017-42de-9529-38eed1bd348e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="d3dApp.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryGenerator.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample1_DrawBox.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample2_DrawHils.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="InitDirect3DApp.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DUtils.h">
+      <Filter>头文件\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="MathF.h">
+      <Filter>头文件\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="d3dApp.cpp">
+      <Filter>源文件\d3dFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>源文件\d3dFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Sampel1_DrawBoxcpp.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample2_DrawHils.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="D3DUtils.cpp">
+      <Filter>源文件\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MathF.cpp">
+      <Filter>源文件\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="InitDirect3DApp.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
