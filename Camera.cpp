@@ -11,12 +11,12 @@ XMMATRIX Camera::GetViewMatrix() {
 }
 
 void Camera::updateCameraDirection() {
-	float3 front;
-	front.x = cos(MathF::Radians(Yaw))*cos(MathF::Radians(Pitch));
-	front.y = sin(MathF::Radians(Pitch));
-	front.z = sin(MathF::Radians(Yaw)) * cos(MathF::Radians(Pitch));
-
-	XMVECTOR f = XMLoadFloat3(&front);
+	XMVECTOR f = XMVectorSet(
+		cos(MathF::Radians(Yaw))*cos(MathF::Radians(Pitch)),
+		sin(MathF::Radians(Pitch)),
+		sin(MathF::Radians(Yaw)) * cos(MathF::Radians(Pitch)),
+		0.0f
+	);
 
 	XMStoreFloat3(&forward, XMVector3Normalize(f));
 	XMStoreFloat3(&right,XMVector3Normalize(XMVector3Cross(f, XMLoadFloat3(&worldUp))));

@@ -1,6 +1,9 @@
 #include "d3dApp.h"
 #include <string>
 #include <assert.h>
+#include<conio.h>
+
+//#define DEBUG
 
 // 为了设置窗口的回调函数,消息处理函数
 // 用到的全局变量
@@ -372,8 +375,10 @@ int D3DApp::Run() {
 			timer.Tick();
 			if (!mAppPaused) {
 
+				#ifdef DEBUG
 				// 清除控制台调试信息
 				ClearConsoleDebugInformation();
+				#endif // DEBUG
 
 				// 计算帧率
 				CalculateFrameState();

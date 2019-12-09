@@ -37,6 +37,15 @@
     <Filter Include="源文件\Utils">
       <UniqueIdentifier>{72923a0d-a017-42de-9529-38eed1bd348e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{7e91d435-d79b-497c-9d54-8c60f484483c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Sample3 DrawShape">
+      <UniqueIdentifier>{1649946c-fbc5-4b90-a6b4-4c54500a31e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\Sample4 Lighting">
+      <UniqueIdentifier>{ada783a2-e666-4732-9ed2-d78631593035}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -68,6 +77,15 @@
     </ClInclude>
     <ClInclude Include="MathF.h">
       <Filter>头文件\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample3_DrawShape.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample4_Lighting.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>头文件\d3dFrameWork</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,5 +119,19 @@
     <ClCompile Include="InitDirect3DApp.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample3_DrawShape.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample4_Lighting.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
+      <Filter>Shader\Sample3 DrawShape</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample4 Lighting\lightDemo.fx">
+      <Filter>Shader\Sample4 Lighting</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

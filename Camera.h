@@ -12,11 +12,11 @@ namespace SJM {
 		RIGHT
 	};
 
-	const float YAW = 0.0f;
+	const float YAW = 90.0f;
 	const float PITCH = 0.0f;
 	const float SPEED = 10.0f;
 	const float SENSITIVITY = 0.1f;
-	const float ZOOM = 90.0f;
+	const float ZOOM = 45.0f;
 	const float NEARDISTANCE = 0.1f;
 	const float FARDISTANCE = 50;
 
@@ -52,6 +52,7 @@ namespace SJM {
 			worldUp(0, 1, 0),Yaw(YAW),Pitch(PITCH),forward(0,0,1),
 			MovementSpeed(SPEED),MouseSensitivity(SENSITIVITY){
 			fov = MathF::Radians(fovAngle);
+			updateCameraDirection();
 		}
 
 		XMMATRIX GetViewMatrix();

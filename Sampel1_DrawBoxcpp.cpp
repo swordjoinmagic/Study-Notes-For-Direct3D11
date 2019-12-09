@@ -134,7 +134,8 @@ void Sample1::OnStart() {
 
 void Sample1::UpdateScene(float deltaTime) {
 
-	printf("forward:(%f,%f,%f)",camera->forward.x, camera->forward.y, camera->forward.z);
+	printf("forward:(%f,%f,%f)\n",camera->forward.x, camera->forward.y, camera->forward.z);
+	printf("Yaw:%f, Pitch:%f\n",camera->Yaw,camera->Pitch);
 
 	angle += deltaTime;
 

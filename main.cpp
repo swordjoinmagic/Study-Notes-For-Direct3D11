@@ -4,10 +4,13 @@
 #include <iostream>
 #include <windows.h>
 #include "Sample1_DrawBox.h"
+#include "Sample2_DrawHils.h"
+#include "Sample3_DrawShape.h"
+#include "Sample4_Lighting.h"
 
 int main(){
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample1 sample(hInstance);
+	Sample4 sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}

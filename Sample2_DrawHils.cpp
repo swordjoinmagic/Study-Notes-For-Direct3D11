@@ -18,6 +18,7 @@ void Sample2::OnStart() {
 
 	// 初始化摄像机
 	camera = std::make_shared<Camera>(float3(0,15,-20),float3(0,0,0),AspectRatio());
+	camera->Far = 1000;
 
 	// 利用网格生成器填充顶点数组
 	GeometryGenerator::MeshData mesh;
@@ -100,8 +101,6 @@ void Sample2::Render() {
 
 	// 设置mvp矩阵
 	XMMATRIX model = XMMatrixIdentity();
-	//XMMATRIX view = XMMatrixLookAtLH(XMVectorSet(0,15,-20,1.0f),XMVectorZero(),XMVectorSet(0,1.0f,0,0));
-	//XMMATRIX proj = XMMatrixPerspectiveFovLH(0.25f*3.1415926f, AspectRatio(), 1.0f, 1000.0f);
 	XMMATRIX view = camera->GetViewMatrix();
 	XMMATRIX proj = camera->GetProjMatrix();
 	XMMATRIX mvp = model * view * proj;
