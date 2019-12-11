@@ -1,20 +1,11 @@
-struct Light{
-    float3 pos;
-    float Kc;  
-    float3 dir;
-    float Ki;
-    float3 color;
-    float Kq;
-    float Phi;
-    float Theta;
-};
+#include "../Common/Light.hlsl"
 
 cbuffer cbPerObject{
     Light light;
     float3 diffuse;
     float3 specular;
     float4x4 mvp;
-    float4x4 transInvMvp;
+    float4x4 transInvModel;
     float4x4 model;
     float3 viewPos;
 };
@@ -33,7 +24,7 @@ struct v2f{
 v2f vert(a2v v){
     v2f o;
     o.pos = mul(float4(v.vertex,1.0f),mvp);
-    o.worldNormal = normalize(mul(v.normal,(float3x3)transInvMvp));    
+    o.worldNormal = normalize(mul(v.normal,(float3x3)transInvModel));    
     o.worldPos = mul(float4(v.vertex,1.0f),model).xyz;
     return o;
 }

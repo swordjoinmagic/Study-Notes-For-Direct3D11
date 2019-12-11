@@ -9,7 +9,7 @@ cbuffer cbPerObject
     float3  diffuse;                    // Offset:   64, size:   12
     float3  specular;                   // Offset:   80, size:   12
     float4x4 mvp;                       // Offset:   96, size:   64
-    float4x4 transInvMvp;               // Offset:  160, size:   64
+    float4x4 transInvModel;             // Offset:  160, size:   64
     float4x4 model;                     // Offset:  224, size:   64
     float3  viewPos;                    // Offset:  288, size:   12
 }
@@ -52,7 +52,7 @@ fxgroup
                 //   float3 diffuse;                    // Offset:   64 Size:    12 [unused]
                 //   float3 specular;                   // Offset:   80 Size:    12 [unused]
                 //   float4x4 mvp;                      // Offset:   96 Size:    64
-                //   float4x4 transInvMvp;              // Offset:  160 Size:    64
+                //   float4x4 transInvModel;            // Offset:  160 Size:    64
                 //   float4x4 model;                    // Offset:  224 Size:    64
                 //   float3 viewPos;                    // Offset:  288 Size:    12 [unused]
                 //
@@ -93,7 +93,7 @@ fxgroup
                 dcl_output o2.xyz
                 dcl_temps 4
                 
-                #line 35 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample4 Lighting\lightDemo.fx"
+                #line 26 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample4 Lighting\lightDemo.fx"
                 mov r0.xyz, v0.xyzx
                 mov r0.w, l(1.000000)
                 dp4 r1.x, r0.xyzw, cb0[6].xyzw  // o<0:NaN:Inf>
@@ -142,7 +142,7 @@ fxgroup
                 //   float3 diffuse;                    // Offset:   64 Size:    12
                 //   float3 specular;                   // Offset:   80 Size:    12
                 //   float4x4 mvp;                      // Offset:   96 Size:    64 [unused]
-                //   float4x4 transInvMvp;              // Offset:  160 Size:    64 [unused]
+                //   float4x4 transInvModel;            // Offset:  160 Size:    64 [unused]
                 //   float4x4 model;                    // Offset:  224 Size:    64 [unused]
                 //   float3 viewPos;                    // Offset:  288 Size:    12
                 //
@@ -180,7 +180,7 @@ fxgroup
                 dcl_output o0.xyzw
                 dcl_temps 5
                 
-                #line 42 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample4 Lighting\lightDemo.fx"
+                #line 33 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample4 Lighting\lightDemo.fx"
                 dp3 r0.x, cb0[1].xyzx, cb0[1].xyzx
                 rsq r0.x, r0.x
                 mul r0.xyz, r0.xxxx, cb0[1].xyzx  // worldLightDir<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
@@ -191,7 +191,7 @@ fxgroup
                 mul r0.w, r0.w, l(0.500000)
                 add r0.w, r0.w, l(0.500000)  // NdotL<0:NaN:Inf>
                 
-                #line 47
+                #line 38
                 mul r2.xyz, r0.wwww, cb0[4].xyzx
                 mul r2.xyz, r2.xyzx, cb0[2].xyzx  // diff<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
                 mul r3.xyz, r2.xyzx, l(0.100000, 0.100000, 0.100000, 0.000000)  // ambi<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>

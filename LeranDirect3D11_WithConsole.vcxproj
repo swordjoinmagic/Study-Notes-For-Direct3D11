@@ -100,6 +100,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>d3d10.lib;Effects11.lib;d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;legacy_stdio_definitions.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuild>
+      <Command>fxc "%(RelativeDir)\%(Filename).fx" /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>%(RelativeDir)\Compiled\;%(Outputs)</Outputs>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -134,6 +140,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <CustomBuild>
+      <Command>fxc "%(RelativeDir)\%(Filename).fx" /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>%(RelativeDir)\Compiled\;%(Outputs)</Outputs>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -161,6 +173,7 @@
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="GeometryGenerator.h" />
     <ClInclude Include="InitDirect3DApp.h" />
+    <ClInclude Include="InputSignature.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="MathF.h" />
     <ClInclude Include="pch.h" />
@@ -168,6 +181,7 @@
     <ClInclude Include="Sample2_DrawHils.h" />
     <ClInclude Include="Sample3_DrawShape.h" />
     <ClInclude Include="Sample4_Lighting.h" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
@@ -187,6 +201,7 @@
     <ClCompile Include="Sampel1_DrawBoxcpp.cpp" />
     <ClCompile Include="Sample2_DrawHils.cpp" />
     <ClCompile Include="Sample4_Lighting.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -198,8 +213,15 @@
   <ItemGroup>
     <CustomBuild Include="Shader\Sample4 Lighting\lightDemo.fx">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc /Fc /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo" "%(FullPath)"</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\Compiled\%(Filename).fxo;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">fxc "%(RelativeDir)\%(Filename).fx" /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)\Compiled\;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">fxc "%(RelativeDir)\%(Filename).fx" /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)\Compiled\;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\Common\DrawLightSphere.fx">
+      <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

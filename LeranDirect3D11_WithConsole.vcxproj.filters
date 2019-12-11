@@ -46,6 +46,9 @@
     <Filter Include="Shader\Sample4 Lighting">
       <UniqueIdentifier>{ada783a2-e666-4732-9ed2-d78631593035}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Common">
+      <UniqueIdentifier>{22906125-8c98-4f95-8988-9416b050280c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -87,6 +90,12 @@
     <ClInclude Include="Light.h">
       <Filter>头文件\d3dFrameWork</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSignature.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -125,6 +134,9 @@
     <ClCompile Include="Sample4_Lighting.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>源文件\d3dFrameWork</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -132,6 +144,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample4 Lighting\lightDemo.fx">
       <Filter>Shader\Sample4 Lighting</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Common\DrawLightSphere.fx">
+      <Filter>Shader\Common</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

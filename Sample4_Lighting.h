@@ -2,6 +2,8 @@
 #include "GeometryGenerator.h"
 #include "d3dApp.h"
 #include "Light.h"
+#include "Shader.h"
+
 
 class Sample4 : public D3DApp{
 private:
@@ -14,18 +16,22 @@ private:
 	ID3D11Buffer* objectIndexBuffer;
 	ID3D11Buffer* objectVertexBuffer;
 
-	ID3DX11Effect* effect;
-	ID3DX11EffectTechnique* technique;
-	ID3DX11EffectMatrixVariable* fxMvp;
-
+	std::shared_ptr<Shader> lightShader;
+	std::shared_ptr<Shader> boxShader;
+		
 	GeometryGenerator geogen;
 
-	ID3D11InputLayout* inputLayout;
+	ID3D11InputLayout* boxInputLayout;
+	ID3D11InputLayout* lightInputLayout;
 
 	Light parallelLight;
 	
+	GeometryGenerator::MeshData sphereMesh;
 
 	uint indexCount;
+
+	Light pointsLights;
+	Light spotLight;
 
 public:
 	Sample4(HINSTANCE hInstance);
@@ -33,4 +39,5 @@ public:
 	void OnStart() override;
 	void Render() override;
 	void UpdateScene(float deltaTime) override;
+	void ProcessKeyBoardInput() override;
 };
