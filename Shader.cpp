@@ -58,6 +58,6 @@ void Shader::SetVector(const std::string& paramName, XMVECTOR &value) {
 	HR(effect->GetVariableByName(paramName.c_str())->AsVector()->SetFloatVector(reinterpret_cast<float*>(&value)));
 }
 
-void Shader::UsePass(int index, ID3D11DeviceContext* D3dDevicecontext) {
+void Shader::UsePass(int index, ID3D11DeviceContext* D3dDevicecontext) const{
 	technique->GetPassByIndex(index)->Apply(0, D3dDevicecontext);
 }

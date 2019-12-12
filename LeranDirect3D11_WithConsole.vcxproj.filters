@@ -49,6 +49,9 @@
     <Filter Include="Shader\Common">
       <UniqueIdentifier>{22906125-8c98-4f95-8988-9416b050280c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Common">
+      <UniqueIdentifier>{614c345b-4d65-4287-a0d6-eb32d92e67cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -96,6 +99,12 @@
     <ClInclude Include="InputSignature.h">
       <Filter>头文件\d3dFrameWork</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultVetexStruct.h">
+      <Filter>头文件\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -135,6 +144,9 @@
       <Filter>源文件\Sample</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
+      <Filter>源文件\d3dFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
       <Filter>源文件\d3dFrameWork</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,7 +13,7 @@ public:
 	Shader(const std::wstring &filePath, ID3D11Device* d3dDevice);
 	~Shader();
 
-	void UsePass(int index, ID3D11DeviceContext* D3dDevicecontext);
+	void UsePass(int index, ID3D11DeviceContext* D3dDevicecontext) const;
 
 	// 从文件中读取shader
 	void LoadCompiledShaderFromFile(const std::wstring &filePath, ID3D11Device* d3dDevice);

@@ -3,37 +3,12 @@
 #include "D3DUtils.h"
 #include <vector>
 #include "MathF.h"
-
+#include "DefaultVetexStruct.h"
 class GeometryGenerator {
 public:
-	struct Vertex {
-		float3 pos;
-		float3 normal;
-		float3 tangent;
-		float2 texcoord;
-
-		Vertex() {}
-		Vertex(
-			const float3& _pos,
-			const float3& _normal,
-			const float3& _tangent,
-			const float2& texcoord):
-			pos(_pos),normal(_normal),
-			tangent(_tangent),texcoord(texcoord) {}
-		Vertex(
-			float x,float y,float z,
-			float normalX,float normalY,float normalZ,
-			float tangentX,float tangentY,float tangentZ,
-			float u,float v) {
-			pos = float3(x,y,z);
-			normal = float3(normalX,normalY,normalZ);
-			tangent = float3(tangentX,tangentY,tangentZ);
-			texcoord = float2(u,v);
-		}
-	};
 	struct MeshData {
 		// 顶点集合
-		std::vector<Vertex> vertices;
+		std::vector<DefaultVertex> vertices;
 		// 索引集合
 		std::vector<uint> indices;
 	};
@@ -122,7 +97,7 @@ public:
 			float dTheta = 2.0f * MathF::PI / sliceCount;
 			// 遍历环上各个顶点
 			for (uint j = 0; j <= sliceCount;j++) {
-				Vertex vertex;
+				DefaultVertex vertex;
 				
 				float c = cosf(j*dTheta);
 				float s = sinf(j*dTheta);
@@ -170,11 +145,11 @@ public:
 			float v = z / height + 0.5f;
 
 			mesh.vertices.push_back(
-				Vertex(float3(x, y, z),float3(0, 1, 0),float3(1, 0, 0),float2(u,v))
+				DefaultVertex(float3(x, y, z),float3(0, 1, 0),float3(1, 0, 0),float2(u,v))
 			);
 		}
 		// 顶面的中心顶点
-		mesh.vertices.push_back(Vertex(float3(0,y,0),float3(0,1,0),float3(1,0,0),float2(0.5f,0.5f)));
+		mesh.vertices.push_back(DefaultVertex(float3(0,y,0),float3(0,1,0),float3(1,0,0),float2(0.5f,0.5f)));
 		// 重心顶点的索引值
 		uint centerindex = (uint)mesh.vertices.size() - 1;
 		for (uint i = 0; i < sliceCount;i++) {
@@ -195,10 +170,10 @@ public:
 			float v = z / height + 0.5f;
 
 			mesh.vertices.push_back(
-				Vertex(float3(x, y, z), float3(0, -1, 0), float3(1, 0, 0), float2(u, v))
+				DefaultVertex(float3(x, y, z), float3(0, -1, 0), float3(1, 0, 0), float2(u, v))
 			);
 		}
-		mesh.vertices.push_back(Vertex(float3(0,y,0),float3(0,-1,0),float3(1,0,0),float2(0.5f,0.5f)));
+		mesh.vertices.push_back(DefaultVertex(float3(0,y,0),float3(0,-1,0),float3(1,0,0),float2(0.5f,0.5f)));
 		centerindex = (uint)mesh.vertices.size() - 1;
 
 		for (uint i = 0; i < sliceCount;i++) {
@@ -209,47 +184,47 @@ public:
 	}
 
 	void CreateBox(float width,float height,float depth,MeshData& meshData) {
-		Vertex v[24];
+		DefaultVertex v[24];
 
 		float w2 = 0.5f*width;
 		float h2 = 0.5f*height;
 		float d2 = 0.5f*depth;
 
 		// Fill in the front face vertex data.
-		v[0] = Vertex(-w2, -h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-		v[1] = Vertex(-w2, +h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-		v[2] = Vertex(+w2, +h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-		v[3] = Vertex(+w2, -h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+		v[0] = DefaultVertex(-w2, -h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+		v[1] = DefaultVertex(-w2, +h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+		v[2] = DefaultVertex(+w2, +h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		v[3] = DefaultVertex(+w2, -h2, -d2, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
 
 		// Fill in the back face vertex data.
-		v[4] = Vertex(-w2, -h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
-		v[5] = Vertex(+w2, -h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-		v[6] = Vertex(+w2, +h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-		v[7] = Vertex(-w2, +h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		v[4] = DefaultVertex(-w2, -h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+		v[5] = DefaultVertex(+w2, -h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+		v[6] = DefaultVertex(+w2, +h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+		v[7] = DefaultVertex(-w2, +h2, +d2, 0.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
 		// Fill in the top face vertex data.
-		v[8] = Vertex(-w2, +h2, -d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-		v[9] = Vertex(-w2, +h2, +d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-		v[10] = Vertex(+w2, +h2, +d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-		v[11] = Vertex(+w2, +h2, -d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+		v[8] = DefaultVertex(-w2, +h2, -d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+		v[9] = DefaultVertex(-w2, +h2, +d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+		v[10] = DefaultVertex(+w2, +h2, +d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		v[11] = DefaultVertex(+w2, +h2, -d2, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
 
 		// Fill in the bottom face vertex data.
-		v[12] = Vertex(-w2, -h2, -d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
-		v[13] = Vertex(+w2, -h2, -d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
-		v[14] = Vertex(+w2, -h2, +d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-		v[15] = Vertex(-w2, -h2, +d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+		v[12] = DefaultVertex(-w2, -h2, -d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 1.0f);
+		v[13] = DefaultVertex(+w2, -h2, -d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+		v[14] = DefaultVertex(+w2, -h2, +d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+		v[15] = DefaultVertex(-w2, -h2, +d2, 0.0f, -1.0f, 0.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
 		// Fill in the left face vertex data.
-		v[16] = Vertex(-w2, -h2, +d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f);
-		v[17] = Vertex(-w2, +h2, +d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f);
-		v[18] = Vertex(-w2, +h2, -d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f);
-		v[19] = Vertex(-w2, -h2, -d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+		v[16] = DefaultVertex(-w2, -h2, +d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f);
+		v[17] = DefaultVertex(-w2, +h2, +d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 0.0f);
+		v[18] = DefaultVertex(-w2, +h2, -d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 1.0f, 0.0f);
+		v[19] = DefaultVertex(-w2, -h2, -d2, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 1.0f, 1.0f);
 
 		// Fill in the right face vertex data.
-		v[20] = Vertex(+w2, -h2, -d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
-		v[21] = Vertex(+w2, +h2, -d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
-		v[22] = Vertex(+w2, +h2, +d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f);
-		v[23] = Vertex(+w2, -h2, +d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
+		v[20] = DefaultVertex(+w2, -h2, -d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f);
+		v[21] = DefaultVertex(+w2, +h2, -d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
+		v[22] = DefaultVertex(+w2, +h2, +d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f);
+		v[23] = DefaultVertex(+w2, -h2, +d2, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f);
 
 		meshData.vertices.assign(&v[0], &v[24]);
 
@@ -297,8 +272,8 @@ public:
 		// Poles: note that there will be texture coordinate distortion as there is
 		// not a unique point on the texture map to assign to the pole when mapping
 		// a rectangular texture onto a sphere.
-		Vertex topVertex(0.0f, +radius, 0.0f, 0.0f, +1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-		Vertex bottomVertex(0.0f, -radius, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+		DefaultVertex topVertex(0.0f, +radius, 0.0f, 0.0f, +1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+		DefaultVertex bottomVertex(0.0f, -radius, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f);
 
 		meshData.vertices.push_back(topVertex);
 
@@ -313,7 +288,7 @@ public:
 			for (UINT j = 0; j <= sliceCount; ++j) {
 				float theta = j * thetaStep;
 
-				Vertex v;
+				DefaultVertex v;
 
 				// spherical to cartesian
 				v.pos.x = radius * sinf(phi)*cosf(theta);
