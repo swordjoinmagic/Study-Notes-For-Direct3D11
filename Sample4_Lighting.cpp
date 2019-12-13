@@ -34,10 +34,27 @@ void Sample4::OnStart() {
 	
 	// 初始化点光源
 	pointsLights.lightColor = float3(1,1,1);
+	pointsLights.Kc = 1;
+	pointsLights.KI = 0.7f;
+	pointsLights.Kq = 1.8f;
+
+	spotLight.lightColor = float3(1,0,0);
+	spotLight.Kc = 1;
+	spotLight.KI = 0.7f;
+	spotLight.Kq = 1.8f;
+	// 聚光灯外角
+	spotLight.Phi = cosf(MathF::Radians(15));
+	// 聚光灯内角
+	spotLight.Theta = cosf(MathF::Radians(7));
+
 }
 
 
 void Sample4::UpdateScene(float deltaTime) {
+
+	spotLight.pos = camera->pos;
+	spotLight.dir = float3(-camera->forward.x, -camera->forward.y, -camera->forward.z);
+
 
 	XMMATRIX model = XMMatrixIdentity();	
 	XMMATRIX view = camera->GetViewMatrix();
@@ -63,11 +80,13 @@ void Sample4::UpdateScene(float deltaTime) {
 	boxShader->SetRawValue("light",&parallelLight,sizeof(parallelLight));
 	boxShader->SetVector("diffuse",diffuse);
 	boxShader->SetVector("specular",specular);
-	
+	boxShader->SetRawValue("pointLight",&pointsLights,sizeof(pointsLights));
+	boxShader->SetRawValue("spotLight",&spotLight,sizeof(spotLight));
 
 	XMMATRIX lightModelMatrix = XMMatrixScaling(0.1f,0.1f,0.1f) * XMMatrixTranslation(pointsLights.pos.x,pointsLights.pos.y,pointsLights.pos.z);
 	XMMATRIX lightMVP = lightModelMatrix * view * proj;
 	lightShader->SetMatrix4x4("mvp",lightMVP);
+
 }
 
 void Sample4::Render() {

@@ -14,26 +14,17 @@ private:
 	};
 
 	std::shared_ptr<Mesh> box;
-	std::shared_ptr<Mesh> lightSphere;
-
-	//ID3D11Buffer* objectIndexBuffer;
-	//ID3D11Buffer* objectVertexBuffer;
+	std::shared_ptr<Mesh> lightSphere;	
 
 	std::shared_ptr<Shader> lightShader;
 	std::shared_ptr<Shader> boxShader;
 		
 	GeometryGenerator geogen;
 
-	//ID3D11InputLayout* boxInputLayout;
-	//ID3D11InputLayout* lightInputLayout;
-
 	Light parallelLight;
 	
 	GeometryGenerator::MeshData sphereMesh;
-	//ID3D11Buffer* lightVB;
-	//ID3D11Buffer* lightIB;
 
-	//uint indexCount;
 
 	Light pointsLights;
 	Light spotLight;

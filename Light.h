@@ -14,8 +14,6 @@ struct Light {
 	// φ,聚光灯外角
 	float Phi;
 	// θ,聚光灯内角,
-	// 是光源指向物体的方向dir和
-	// 聚光灯sportDir所成的夹角
 	float Theta;
 
 	XMVECTOR GetDir(float3 objPos) {
