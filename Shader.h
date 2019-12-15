@@ -2,14 +2,13 @@
 
 #include "D3DUtils.h"
 #include "InputSignature.h"
-
+#include "Texture.h"
 
 class Shader{
 private:
 	ID3DX11Effect* effect;
 	ID3DX11EffectTechnique* technique;
 public:
-	Shader();
 	Shader(const std::wstring &filePath, ID3D11Device* d3dDevice);
 	~Shader();
 
@@ -29,4 +28,5 @@ public:
 	void SetRawValue(const std::string& paramName,const void *pData,uint size);
 	void SetMatrix4x4(const std::string& paramName, XMMATRIX &value);
 	void SetVector(const std::string& paramName, XMVECTOR &value);
+	void SetTexture2D(const std::string& paramName,const Texture &texture);
 };

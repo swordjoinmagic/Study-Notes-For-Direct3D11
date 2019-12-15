@@ -183,7 +183,9 @@
     <ClInclude Include="Sample2_DrawHils.h" />
     <ClInclude Include="Sample3_DrawShape.h" />
     <ClInclude Include="Sample4_Lighting.h" />
+    <ClInclude Include="Sample5_Texture.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
@@ -204,7 +206,9 @@
     <ClCompile Include="Sampel1_DrawBoxcpp.cpp" />
     <ClCompile Include="Sample2_DrawHils.cpp" />
     <ClCompile Include="Sample4_Lighting.cpp" />
+    <ClCompile Include="Sample5_Texture.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -224,6 +228,11 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Common\DrawLightSphere.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\Sample5 Texture\textureMap.fx">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>

@@ -1,6 +1,5 @@
 #include "Shader.h"
 
-Shader::Shader() {}
 Shader::Shader(const std::wstring &filePath, ID3D11Device* d3dDevice) {
 	this->LoadCompiledShaderFromFile(filePath,d3dDevice);
 }
@@ -57,7 +56,11 @@ void Shader::SetMatrix4x4(const std::string& paramName, XMMATRIX &value) {
 void Shader::SetVector(const std::string& paramName, XMVECTOR &value) {
 	HR(effect->GetVariableByName(paramName.c_str())->AsVector()->SetFloatVector(reinterpret_cast<float*>(&value)));
 }
+void Shader::SetTexture2D(const std::string& paramName,const Texture& texture) {
+	HR(effect->GetVariableByName(paramName.c_str())->AsShaderResource()->SetResource(texture.shaderResourceView));	
+}
 
 void Shader::UsePass(int index, ID3D11DeviceContext* D3dDevicecontext) const{
 	technique->GetPassByIndex(index)->Apply(0, D3dDevicecontext);
 }
+

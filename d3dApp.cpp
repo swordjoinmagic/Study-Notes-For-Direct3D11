@@ -314,7 +314,7 @@ void D3DApp::OnResize() {
 	depthStencilDesc.Usage = D3D11_USAGE_DEFAULT;
 	depthStencilDesc.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	depthStencilDesc.CPUAccessFlags = 0;
-	depthStencilDesc.MiscFlags = 0;
+	depthStencilDesc.MiscFlags = 0;	
 
 	// 创建深度/模板缓冲
 	HR(md3dDevice->CreateTexture2D(&depthStencilDesc,0,&mDepthStencilBuffer));

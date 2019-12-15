@@ -52,6 +52,9 @@
     <Filter Include="头文件\Common">
       <UniqueIdentifier>{614c345b-4d65-4287-a0d6-eb32d92e67cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample5 Texture">
+      <UniqueIdentifier>{29674c22-7e18-441e-aaef-88f89dd3ebd0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -105,6 +108,12 @@
     <ClInclude Include="DefaultVetexStruct.h">
       <Filter>头文件\Common</Filter>
     </ClInclude>
+    <ClInclude Include="Sample5_Texture.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -149,6 +158,12 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>源文件\d3dFrameWork</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>源文件\d3dFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample5_Texture.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -159,6 +174,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Common\DrawLightSphere.fx">
       <Filter>Shader\Common</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample5 Texture\textureMap.fx">
+      <Filter>Shader\Sample5 Texture</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

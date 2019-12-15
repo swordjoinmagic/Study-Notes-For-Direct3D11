@@ -7,10 +7,11 @@
 #include "Sample2_DrawHils.h"
 #include "Sample3_DrawShape.h"
 #include "Sample4_Lighting.h"
+#include "Sample5_Texture.h"
 
 int main(){
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample4 sample(hInstance);
+	Sample5 sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}
