@@ -4,6 +4,7 @@ cbuffer cbPerObject{
 
 Texture2D MainTex;
 
+
 SamplerState state1{
     Filter =  MIN_MAG_MIP_LINEAR;
     AddressU = CLAMP;

@@ -55,6 +55,9 @@
     <Filter Include="Shader\Sample5 Texture">
       <UniqueIdentifier>{29674c22-7e18-441e-aaef-88f89dd3ebd0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample6 Blend">
+      <UniqueIdentifier>{1defb318-78b0-4dde-8dce-fc4637db815d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -114,6 +117,9 @@
     <ClInclude Include="Texture.h">
       <Filter>头文件\d3dFrameWork</Filter>
     </ClInclude>
+    <ClInclude Include="Sample6_Blend.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -164,6 +170,9 @@
     <ClCompile Include="Sample5_Texture.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample6_Blend.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -177,6 +186,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample5 Texture\textureMap.fx">
       <Filter>Shader\Sample5 Texture</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample6 Blend\simpleFog.fx">
+      <Filter>Shader\Sample6 Blend</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

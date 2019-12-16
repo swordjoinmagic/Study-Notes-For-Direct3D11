@@ -184,6 +184,7 @@
     <ClInclude Include="Sample3_DrawShape.h" />
     <ClInclude Include="Sample4_Lighting.h" />
     <ClInclude Include="Sample5_Texture.h" />
+    <ClInclude Include="Sample6_Blend.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
@@ -207,6 +208,7 @@
     <ClCompile Include="Sample2_DrawHils.cpp" />
     <ClCompile Include="Sample4_Lighting.cpp" />
     <ClCompile Include="Sample5_Texture.cpp" />
+    <ClCompile Include="Sample6_Blend.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
@@ -233,6 +235,11 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample5 Texture\textureMap.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\Sample6 Blend\simpleFog.fx">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>

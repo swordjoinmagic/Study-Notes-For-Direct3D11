@@ -342,6 +342,7 @@ bool D3DApp::Init() {
 	if (!InitDirect3D())
 		return false;
 
+	//camera = std::make_shared<SJM::Camera>(float3(0,0,-5),float3(0,0,0),AspectRatio());
 	OnStart();
 
 	return true;
