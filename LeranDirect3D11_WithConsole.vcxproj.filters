@@ -58,6 +58,9 @@
     <Filter Include="Shader\Sample6 Blend">
       <UniqueIdentifier>{1defb318-78b0-4dde-8dce-fc4637db815d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample7 DepthStencil">
+      <UniqueIdentifier>{92ae138b-e725-48cb-a3cd-010b063802b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -120,6 +123,9 @@
     <ClInclude Include="Sample6_Blend.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample7_DepthStencil.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -173,6 +179,9 @@
     <ClCompile Include="Sample6_Blend.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample7_DepthStencil.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -189,6 +198,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample6 Blend\simpleFog.fx">
       <Filter>Shader\Sample6 Blend</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample7 DepthStencil\diffuseShader.fx">
+      <Filter>Shader\Sample7 DepthStencil</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>

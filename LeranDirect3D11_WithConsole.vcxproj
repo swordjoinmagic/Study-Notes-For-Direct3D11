@@ -185,6 +185,7 @@
     <ClInclude Include="Sample4_Lighting.h" />
     <ClInclude Include="Sample5_Texture.h" />
     <ClInclude Include="Sample6_Blend.h" />
+    <ClInclude Include="Sample7_DepthStencil.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
@@ -209,6 +210,7 @@
     <ClCompile Include="Sample4_Lighting.cpp" />
     <ClCompile Include="Sample5_Texture.cpp" />
     <ClCompile Include="Sample6_Blend.cpp" />
+    <ClCompile Include="Sample7_DepthStencil.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
@@ -240,6 +242,11 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample6 Blend\simpleFog.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Shader\Sample7 DepthStencil\diffuseShader.fx">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>
