@@ -61,6 +61,9 @@
     <Filter Include="Shader\Sample7 DepthStencil">
       <UniqueIdentifier>{92ae138b-e725-48cb-a3cd-010b063802b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample8 geometryShader">
+      <UniqueIdentifier>{b29c6cbf-f241-4aa1-bc86-156e9ef80ec1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -126,6 +129,9 @@
     <ClInclude Include="Sample7_DepthStencil.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample8_Billboard.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -182,6 +188,9 @@
     <ClCompile Include="Sample7_DepthStencil.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample8_Billboard.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -201,6 +210,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample7 DepthStencil\diffuseShader.fx">
       <Filter>Shader\Sample7 DepthStencil</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample8 GeometryShader\billboard.fx">
+      <Filter>Shader\Sample8 geometryShader</Filter>
     </CustomBuild>
   </ItemGroup>
 </Project>
