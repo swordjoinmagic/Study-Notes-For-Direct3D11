@@ -8,4 +8,5 @@ public:
 	~Texture();	
 	ID3D11ShaderResourceView* shaderResourceView = nullptr;
 	ID3D11RenderTargetView* renderTargetView = nullptr;	
+	ID3D11UnorderedAccessView* uavView = nullptr;
 };

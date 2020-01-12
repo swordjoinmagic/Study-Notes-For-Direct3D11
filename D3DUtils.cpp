@@ -29,3 +29,33 @@ std::vector<char> LoadCompiledEffectFile(const std::wstring& fileName,int& size)
 
 	return compiledShader;
 }
+
+HRESULT CreateBuffer(
+	D3D11_USAGE usage,
+	uint byteWidth,
+	uint bindFlag,
+	uint cpuAccessFlags,
+	uint miscFlags,
+	uint structureByteStride,
+	const void *data,
+	ID3D11Device* d3dDevice,
+	ID3D11Buffer** buffer
+) {
+	D3D11_BUFFER_DESC bufferDesc = {
+		byteWidth,
+		usage,		
+		bindFlag,
+		cpuAccessFlags,
+		miscFlags,
+		structureByteStride
+	};
+
+	D3D11_SUBRESOURCE_DATA bufferData;
+	bufferData.pSysMem = data;
+	
+	if(data)
+		return d3dDevice->CreateBuffer(&bufferDesc,&bufferData,buffer);
+	else {
+		return d3dDevice->CreateBuffer(&bufferDesc, 0, buffer);
+	}
+}

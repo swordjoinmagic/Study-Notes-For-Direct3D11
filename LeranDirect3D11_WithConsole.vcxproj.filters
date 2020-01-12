@@ -64,6 +64,9 @@
     <Filter Include="Shader\Sample8 geometryShader">
       <UniqueIdentifier>{b29c6cbf-f241-4aa1-bc86-156e9ef80ec1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample9 ComputeShader">
+      <UniqueIdentifier>{f03982a6-abc3-49ef-8416-090cd0550077}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -132,6 +135,12 @@
     <ClInclude Include="Sample8_Billboard.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample9_SimpleCSDemo_VecAddcpp.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample9_RenderToTexture.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -191,6 +200,9 @@
     <ClCompile Include="Sample8_Billboard.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample9_SimpleCSDemo_VecAddcpp.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -214,5 +226,13 @@
     <CustomBuild Include="Shader\Sample8 GeometryShader\billboard.fx">
       <Filter>Shader\Sample8 geometryShader</Filter>
     </CustomBuild>
+    <CustomBuild Include="Shader\Sample9 ComputeShader\VecAdd.fx">
+      <Filter>Shader\Sample9 ComputeShader</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\aaa.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

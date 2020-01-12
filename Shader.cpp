@@ -60,6 +60,13 @@ void Shader::SetTexture2D(const std::string& paramName,const Texture& texture) {
 	HR(effect->GetVariableByName(paramName.c_str())->AsShaderResource()->SetResource(texture.shaderResourceView));	
 }
 
+void Shader::SetShaderResource(const std::string& paramName,ID3D11ShaderResourceView* value) {
+	HR(effect->GetVariableByName(paramName.c_str())->AsShaderResource()->SetResource(value));
+}
+void Shader::SetUnorderedAccessView(const std::string& paramName, ID3D11UnorderedAccessView* value) {
+	HR(effect->GetVariableByName(paramName.c_str())->AsUnorderedAccessView()->SetUnorderedAccessView(value));
+}
+
 void Shader::UsePass(int index, ID3D11DeviceContext* D3dDevicecontext) const{
 	technique->GetPassByIndex(index)->Apply(0, D3dDevicecontext);
 }

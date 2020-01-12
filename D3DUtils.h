@@ -71,5 +71,21 @@ namespace Colors {
 	XMGLOBALCONST XMVECTORF32 LightSteelBlue = { 0.69f, 0.77f, 0.87f, 1.0f };
 }
 
+#pragma region Shader编译相关
 ID3DBlob* LoadCompiledShaderFromFile(const std::wstring& fileName);
 std::vector<char> LoadCompiledEffectFile(const std::wstring& fileName, int& size);
+#pragma endregion
+
+
+// 简化申请缓冲流程
+HRESULT CreateBuffer(
+	D3D11_USAGE usage,
+	uint byteWidth,
+	uint bindFlag,
+	uint cpuAccessFlags,
+	uint miscFlags,
+	uint structureByteStride,
+	const void *data,
+	ID3D11Device* d3dDevice,
+	ID3D11Buffer** buffer
+);

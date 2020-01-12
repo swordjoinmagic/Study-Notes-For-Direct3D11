@@ -29,4 +29,6 @@ public:
 	void SetMatrix4x4(const std::string& paramName, XMMATRIX &value);
 	void SetVector(const std::string& paramName, XMVECTOR &value);
 	void SetTexture2D(const std::string& paramName,const Texture &texture);
+	void SetShaderResource(const std::string& paramName,ID3D11ShaderResourceView* value);
+	void SetUnorderedAccessView(const std::string& paramName,ID3D11UnorderedAccessView* value);
 };

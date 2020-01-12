@@ -11,10 +11,11 @@
 #include "Sample6_Blend.h"
 #include "Sample7_DepthStencil.h"
 #include "Sample8_Billboard.h"
+#include "Sample9_SimpleCSDemo_VecAddcpp.h"
 
 int main(){
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample8 sample(hInstance);
+	Sample9CSDemo sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}
