@@ -203,6 +203,9 @@
     <ClCompile Include="Sample9_SimpleCSDemo_VecAddcpp.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample9_RenderToTexture.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -227,6 +230,9 @@
       <Filter>Shader\Sample8 geometryShader</Filter>
     </CustomBuild>
     <CustomBuild Include="Shader\Sample9 ComputeShader\VecAdd.fx">
+      <Filter>Shader\Sample9 ComputeShader</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample9 ComputeShader\postEffect.fx">
       <Filter>Shader\Sample9 ComputeShader</Filter>
     </CustomBuild>
   </ItemGroup>

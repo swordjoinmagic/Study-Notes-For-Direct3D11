@@ -53,7 +53,7 @@ protected:
 	// 初始化D3D程序
 	bool InitDirect3D();
 	void CalculateFrameState();
-	void DrawScene();
+	virtual void DrawScene();
 
 	// 清除控制台信息
 	void ClearConsoleDebugInformation();

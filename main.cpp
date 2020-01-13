@@ -12,10 +12,11 @@
 #include "Sample7_DepthStencil.h"
 #include "Sample8_Billboard.h"
 #include "Sample9_SimpleCSDemo_VecAddcpp.h"
+#include "Sample9_RenderToTexture.h"
 
 int main(){
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample9CSDemo sample(hInstance);
+	Sample9RenderToTexture sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}
