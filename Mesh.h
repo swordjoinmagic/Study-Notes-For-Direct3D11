@@ -21,4 +21,5 @@ public:
 	void SetUp(const InputSignature& inputSignature,ID3D11Device* device);
 	void SetUp(const InputSignature& inputSignature, ID3D11Device* device,D3D11_INPUT_ELEMENT_DESC* inputElementsDesc,uint size);
 	void Draw(const Shader& shader,ID3D11DeviceContext* deviceContext, D3D_PRIMITIVE_TOPOLOGY primitiveTopology=D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST) const;
+	void DrawInstanced(const Shader& shader, ID3D11DeviceContext* deviceContext,uint count, D3D_PRIMITIVE_TOPOLOGY primitiveTopology = D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 };

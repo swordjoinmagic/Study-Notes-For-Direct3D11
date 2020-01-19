@@ -9,6 +9,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <wrl/client.h>
 
 typedef XMFLOAT2 float2;
 typedef XMFLOAT3 float3;
@@ -43,6 +44,9 @@ typedef UINT uint;
 #define VK_KEY_X 0x58
 #define VK_KEY_Y 0x59
 #define VK_KEY_Z 0x5A
+
+template <class T>
+using ComPtr = Microsoft::WRL::ComPtr<T>;
 
 #ifndef HR
 #define HR(x) {\
@@ -89,3 +93,5 @@ HRESULT CreateBuffer(
 	ID3D11Device* d3dDevice,
 	ID3D11Buffer** buffer
 );
+
+XMMATRIX GetInverseMatrix(XMMATRIX A);

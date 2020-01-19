@@ -61,3 +61,19 @@ void Mesh::Draw(const Shader& shader, ID3D11DeviceContext* deviceContext, D3D_PR
 	deviceContext->DrawIndexed(indices.size(), 0, 0);
 
 }
+
+void Mesh::DrawInstanced(const Shader& shader, ID3D11DeviceContext* deviceContext, uint count, D3D_PRIMITIVE_TOPOLOGY primitiveTopology) {
+	// 设置绘制模式
+	deviceContext->IASetPrimitiveTopology(primitiveTopology);
+	// 设置顶点输入布局
+	deviceContext->IASetInputLayout(inputLayout);
+	uint stride = sizeof(DefaultVertex);
+	uint offset = 0;
+	// 设置顶点和索引缓冲
+	deviceContext->IASetVertexBuffers(0, 1, &verticesBuffer, &stride, &offset);
+	deviceContext->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+
+	shader.UsePass(0, deviceContext);
+
+	deviceContext->DrawIndexedInstanced(indices.size(),count,0,0,0);
+}

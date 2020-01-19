@@ -101,7 +101,7 @@
       <AdditionalDependencies>d3d10.lib;Effects11.lib;d3d11.lib;d3dx11d.lib;D3DCompiler.lib;dxerr.lib;dxgi.lib;legacy_stdio_definitions.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuild>
-      <Command>fxc "%(RelativeDir)\%(Filename).fx" /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo"</Command>
+      <Command>fxc "%(RelativeDir)\%(Filename).fx" /Od /Zi /T fx_5_0 /Fo "%(RelativeDir)\Compiled\%(Filename).fxo" /Fc "%(RelativeDir)\Compiled\%(Filename).assembly"</Command>
     </CustomBuild>
     <CustomBuild>
       <Outputs>%(RelativeDir)\Compiled\;%(Outputs)</Outputs>
@@ -179,6 +179,7 @@
     <ClInclude Include="MathF.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Sample10_Instancing.h" />
     <ClInclude Include="Sample1_DrawBox.h" />
     <ClInclude Include="Sample2_DrawHils.h" />
     <ClInclude Include="Sample3_DrawShape.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="d3dApp.cpp" />
     <ClCompile Include="D3DUtils.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Sample10_Instancing.cpp" />
     <ClCompile Include="Sample3_DrawShape.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InitDirect3DApp.cpp" />
@@ -272,6 +274,9 @@
       <FileType>Document</FileType>
     </CustomBuild>
     <CustomBuild Include="Shader\Sample9 ComputeShader\postEffect.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample10 Instancing\instancingShader.fx">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>

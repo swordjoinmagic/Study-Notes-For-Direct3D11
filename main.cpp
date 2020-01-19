@@ -13,10 +13,12 @@
 #include "Sample8_Billboard.h"
 #include "Sample9_SimpleCSDemo_VecAddcpp.h"
 #include "Sample9_RenderToTexture.h"
+#include "Sample10_Instancing.h"
 
 int main(){
+	
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample9RenderToTexture sample(hInstance);
+	Sample10 sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}

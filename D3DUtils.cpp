@@ -59,3 +59,9 @@ HRESULT CreateBuffer(
 		return d3dDevice->CreateBuffer(&bufferDesc, 0, buffer);
 	}
 }
+
+
+XMMATRIX GetInverseMatrix(XMMATRIX A) {
+	XMVECTOR det = XMMatrixDeterminant(A);
+	return XMMatrixInverse(&det,A);	
+}
