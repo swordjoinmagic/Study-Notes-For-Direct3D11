@@ -147,6 +147,12 @@
     <ClInclude Include="Sample10_Instancing.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample11_Frustum.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="xnacollision.h">
+      <Filter>头文件\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -215,6 +221,12 @@
     <ClCompile Include="Sample10_Instancing.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample11_Frustum.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
+    <ClCompile Include="xnacollision.cpp">
+      <Filter>源文件\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -245,6 +257,9 @@
       <Filter>Shader\Sample9 ComputeShader</Filter>
     </CustomBuild>
     <CustomBuild Include="Shader\Sample10 Instancing\instancingShader.fx">
+      <Filter>Shader\Sample10 Instancing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample10 Instancing\frustum.fx">
       <Filter>Shader\Sample10 Instancing</Filter>
     </CustomBuild>
   </ItemGroup>
