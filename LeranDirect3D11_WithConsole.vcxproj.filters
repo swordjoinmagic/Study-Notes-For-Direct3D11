@@ -70,6 +70,9 @@
     <Filter Include="Shader\Sample10 Instancing">
       <UniqueIdentifier>{3a78d7c2-e410-4f07-bfd1-e37a947baab3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample11 CubeMap">
+      <UniqueIdentifier>{12878985-5f98-486f-b7b7-039b81ecad4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -153,6 +156,9 @@
     <ClInclude Include="xnacollision.h">
       <Filter>头文件\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Sample12_SkyBox.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -227,6 +233,9 @@
     <ClCompile Include="xnacollision.cpp">
       <Filter>源文件\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Sample12_SkyBox.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -261,6 +270,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample10 Instancing\frustum.fx">
       <Filter>Shader\Sample10 Instancing</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample11 CubeMap\skyBox.fx">
+      <Filter>Shader\Sample11 CubeMap</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

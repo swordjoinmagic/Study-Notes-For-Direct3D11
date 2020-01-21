@@ -10,6 +10,29 @@ Mesh::~Mesh() {
 	ReleaseCOM(inputLayout);
 }
 
+void Mesh::CreateBuffer(ID3D11Device* device) {
+	// 创建顶点/索引缓冲
+	D3D11_BUFFER_DESC vbufferDesc;
+	vbufferDesc.Usage = D3D11_USAGE_IMMUTABLE;
+	vbufferDesc.ByteWidth = sizeof(DefaultVertex)*vertices.size();
+	vbufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vbufferDesc.CPUAccessFlags = 0;
+	vbufferDesc.MiscFlags = 0;
+	D3D11_SUBRESOURCE_DATA vinitData;
+	vinitData.pSysMem = &vertices[0];
+	HR(device->CreateBuffer(&vbufferDesc, &vinitData, &verticesBuffer));
+
+	D3D11_BUFFER_DESC iBufferDesc;
+	iBufferDesc.Usage = D3D11_USAGE_IMMUTABLE;
+	iBufferDesc.ByteWidth = sizeof(uint)*indices.size();
+	iBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	iBufferDesc.CPUAccessFlags = 0;
+	iBufferDesc.MiscFlags = 0;
+	D3D11_SUBRESOURCE_DATA iinitData;
+	iinitData.pSysMem = &indices[0];
+	HR(device->CreateBuffer(&iBufferDesc, &iinitData, &indexBuffer));
+}
+
 void Mesh::SetUp(const InputSignature& inputSignature, ID3D11Device* device) {
 	// 创建顶点/索引缓冲
 	D3D11_BUFFER_DESC vbufferDesc;
@@ -46,6 +69,10 @@ void Mesh::SetUp(const InputSignature& inputSignature, ID3D11Device* device, D3D
 }
 
 void Mesh::Draw(const Shader& shader, ID3D11DeviceContext* deviceContext, D3D_PRIMITIVE_TOPOLOGY primitiveTopology) const {
+	this->Draw(shader,deviceContext,this->inputLayout);
+}
+
+void Mesh::Draw(const Shader& shader, ID3D11DeviceContext* deviceContext,ID3D11InputLayout* inputLayout, D3D_PRIMITIVE_TOPOLOGY primitiveTopology) const {
 	// 设置绘制模式
 	deviceContext->IASetPrimitiveTopology(primitiveTopology);
 	// 设置顶点输入布局
