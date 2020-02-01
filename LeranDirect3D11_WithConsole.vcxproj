@@ -184,6 +184,7 @@
     <ClInclude Include="Sample11_Frustum.h" />
     <ClInclude Include="Sample12_SkyBox.h" />
     <ClInclude Include="Sample13_ShadowMap.h" />
+    <ClInclude Include="Sample14_Projector.h" />
     <ClInclude Include="Sample1_DrawBox.h" />
     <ClInclude Include="Sample2_DrawHils.h" />
     <ClInclude Include="Sample3_DrawShape.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="Sample11_Frustum.cpp" />
     <ClCompile Include="Sample12_SkyBox.cpp" />
     <ClCompile Include="Sample13_ShadowMap.cpp" />
+    <ClCompile Include="Sample14_Projector.cpp" />
     <ClCompile Include="Sample3_DrawShape.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InitDirect3DApp.cpp" />
@@ -299,6 +301,9 @@
       <FileType>Document</FileType>
     </CustomBuild>
     <CustomBuild Include="Shader\Sample12 ShadowMap\CreateShadowMap.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample13 Projector\simpleProjector.fx">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>

@@ -76,6 +76,9 @@
     <Filter Include="Shader\Sample12 ShadowMap">
       <UniqueIdentifier>{41c3c83e-b041-4fec-b9b1-6783455144e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample13 Projector">
+      <UniqueIdentifier>{8636797c-4151-4c09-a2b0-03821374cae5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -168,6 +171,9 @@
     <ClInclude Include="Sample13_ShadowMap.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Sample14_Projector.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -251,6 +257,9 @@
     <ClCompile Include="Sample13_ShadowMap.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Sample14_Projector.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -294,6 +303,9 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample12 ShadowMap\CreateShadowMap.fx">
       <Filter>Shader\Sample12 ShadowMap</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample13 Projector\simpleProjector.fx">
+      <Filter>Shader\Sample13 Projector</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

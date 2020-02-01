@@ -24,8 +24,9 @@ Texture2D shadowMap;
 SamplerState state
 {
     Filter   = uint(MIN_MAG_MIP_LINEAR /* 21 */);
-    AddressU = uint(CLAMP /* 3 */);
-    AddressV = uint(CLAMP /* 3 */);
+    AddressU = uint(BORDER /* 4 */);
+    AddressV = uint(BORDER /* 4 */);
+    BorderColor = float4(1, 1, 1, 1);
 };
 
 //
@@ -114,7 +115,7 @@ fxgroup
                 dcl_output o3.xy
                 dcl_temps 4
                 
-                #line 52 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample12 ShadowMap\simpleShadow.fx"
+                #line 53 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample12 ShadowMap\simpleShadow.fx"
                 mov r0.xyz, v0.xyzx
                 mov r0.w, l(1.000000)
                 dp4 r1.x, r0.xyzw, cb0[0].xyzw  // o<0:NaN:Inf>
@@ -131,7 +132,7 @@ fxgroup
                 dp4 r3.z, r0.xyzw, cb0[6].xyzw  // o<9:NaN:Inf>
                 mov r0.xy, v2.xyxx  // o<10,11>
                 
-                #line 58
+                #line 59
                 mov o0.xyzw, r1.xyzw  // vert<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                 mov o1.xyz, r2.xyzx  // vert<4:NaN:Inf,5:NaN:Inf,6:NaN:Inf>
                 mov o2.xyz, r3.xyzx  // vert<7:NaN:Inf,8:NaN:Inf,9:NaN:Inf>
@@ -215,7 +216,7 @@ fxgroup
                 dcl_output o0.xyzw
                 dcl_temps 4
                 
-                #line 63 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample12 ShadowMap\simpleShadow.fx"
+                #line 64 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample12 ShadowMap\simpleShadow.fx"
                 dp3 r0.x, v2.xyzx, v2.xyzx
                 rsq r0.x, r0.x
                 mul r0.xyz, r0.xxxx, v2.xyzx  // worldNormal<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf>
@@ -229,10 +230,10 @@ fxgroup
                 mul r0.xyzw, r0.xxxx, r1.xyzw
                 mul r0.xyzw, r0.xyzw, cb0[21].xyzw  // diffuse<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                 
-                #line 78
+                #line 79
                 mul r1.xyzw, r0.xyzw, l(0.100000, 0.100000, 0.100000, 0.100000)  // ambient<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                 
-                #line 81
+                #line 82
                 mov r2.xyz, v1.xyzx
                 mov r2.w, l(1.000000)
                 dp4 r3.x, r2.xyzw, cb0[12].xyzw  // shadowUV<0:NaN:Inf>
@@ -241,16 +242,16 @@ fxgroup
                 dp4 r2.x, r2.xyzw, cb0[15].xyzw  // shadowUV<3:NaN:Inf>
                 div r2.xyz, r3.zxyz, r2.xxxx  // shadowUV<2:NaN:Inf,0:NaN:Inf,1:NaN:Inf>
                 
-                #line 87
+                #line 88
                 mul r2.yz, r2.yyzy, l(0.000000, 0.500000, -0.500000, 0.000000)
                 add r2.yz, r2.yyzy, l(0.000000, 0.500000, 0.500000, 0.000000)  // uv<0:NaN:Inf,1:NaN:Inf>
                 
-                #line 92
-                sample_indexable(texture2d)(float,float,float,float) r2.w, r2.yzyy, t1.yzwx, s0
-                mov r2.w, r2.w  // nearestDepth<0:Inf>
-                add r2.w, r2.w, l(0.005000)  // nearestDepth<0:Inf>
+                #line 93
+                sample_indexable(texture2d)(float,float,float,float) r2.y, r2.yzyy, t1.yxzw, s0
+                mov r2.y, r2.y  // nearestDepth<0:Inf>
+                add r2.y, r2.y, l(0.005000)  // nearestDepth<0:Inf>
                 
-                #line 96
+                #line 97
                 mov r2.x, r2.x  // depth<0:NaN:Inf>
                 add r0.xyzw, r0.xyzw, r1.xyzw  // finalColor<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                 lt r1.x, l(1.000000), r2.x
@@ -258,33 +259,22 @@ fxgroup
                   mov o0.xyzw, r0.xyzw  // pixel<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                   ret 
                 endif 
-                lt r1.x, l(1.000000), r2.y
-                lt r1.y, l(1.000000), r2.z
-                or r1.x, r1.y, r1.x
-                lt r1.y, r2.y, l(0.000000)
-                or r1.x, r1.y, r1.x
-                lt r1.y, r2.z, l(0.000000)
-                or r1.x, r1.y, r1.x
-                if_nz r1.x
-                  mov o0.xyzw, r0.xyzw  // pixel<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
-                  ret 
-                endif 
                 
-                #line 104
-                lt r1.x, r2.w, r2.x
+                #line 105
+                lt r1.x, r2.y, r2.x
                 if_nz r1.x
                   mov o0.xyzw, cb0[23].xyzw  // pixel<0,1,2,3>
                   ret 
                 else 
                 
-                #line 107
+                #line 108
                   mov o0.xyzw, r0.xyzw  // pixel<0:NaN:Inf,1:NaN:Inf,2:NaN:Inf,3:NaN:Inf>
                   ret 
                 
-                #line 104
+                #line 105
                 endif 
                 ret 
-                // Approximately 52 instruction slots used
+                // Approximately 41 instruction slots used
                             
             };
         }

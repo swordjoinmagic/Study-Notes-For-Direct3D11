@@ -78,7 +78,7 @@ void Sample13::OnStart() {
 	boxTexture = std::make_shared<Texture>(md3dDevice, L"Textures/Crate_Diffuse.jpg");
 
 	// 初始化光源
-	light.pos = float3(0,6,0);4
+	light.pos = float3(0,6,0);
 	light.dir = float3(1,1,0);
 
 	D3D11_INPUT_ELEMENT_DESC inputElementsDesc[] = {
@@ -132,7 +132,7 @@ void Sample13::Render() {
 	XMVECTOR focusPos = lightPos - lightDir;
 	XMVECTOR up = XMVectorSet(0, 1, 0, 0);
 	XMMATRIX view = XMMatrixLookAtLH(lightPos, focusPos, up);	
-	XMMATRIX proj = XMMatrixOrthographicLH(20, 20, 0.1f, 100);	
+	XMMATRIX proj = XMMatrixOrthographicLH(5, 5, 0.1f, 100);	
 	RenderSceneToCreateShadowMap(view,proj);
 	
 	

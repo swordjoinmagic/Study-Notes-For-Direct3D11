@@ -29,8 +29,9 @@ Texture2D shadowMap;
 
 SamplerState state{
     Filter =  MIN_MAG_MIP_LINEAR;
-    AddressU = CLAMP;
-    AddressV = CLAMP;
+    AddressU = BORDER;
+    AddressV = BORDER;
+    BorderColor = float4(1,1,1,1);
 };
 
 struct a2v{
@@ -98,7 +99,7 @@ float4 pixel(v2f i) : SV_Target{
     float4 finalColor = ambient + diffuse;
 
     if(depth>1.0) return finalColor;
-    if(uv.x>1.0 || uv.y>1.0 || uv.x<0 || uv.y<0) return finalColor;
+    // if(uv.x>1.0 || uv.y>1.0 || uv.x<0 || uv.y<0) return finalColor;
 
     // 如果当前像素深度大于最近深度,说明当前像素被某个物体遮挡了,应该产生阴影
     if(depth>nearestDepth){
