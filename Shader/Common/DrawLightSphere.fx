@@ -11,7 +11,7 @@ float4 vert(a2v v) : SV_Position{
     return mul(float4(v.vertex,1.0),mvp);
 }
 float4 frag(float4 pos : SV_Position):SV_Target{
-    return float4(1,1,1,1);
+    return float4(1,0,0,1);
 }
 
 technique11{

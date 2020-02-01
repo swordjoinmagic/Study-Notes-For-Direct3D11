@@ -168,6 +168,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CubeMap.h" />
     <ClInclude Include="d3dApp.h" />
     <ClInclude Include="D3DUtils.h" />
     <ClInclude Include="DefaultVetexStruct.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Sample10_Instancing.h" />
     <ClInclude Include="Sample11_Frustum.h" />
     <ClInclude Include="Sample12_SkyBox.h" />
+    <ClInclude Include="Sample13_ShadowMap.h" />
     <ClInclude Include="Sample1_DrawBox.h" />
     <ClInclude Include="Sample2_DrawHils.h" />
     <ClInclude Include="Sample3_DrawShape.h" />
@@ -198,12 +200,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CubeMap.cpp" />
     <ClCompile Include="d3dApp.cpp" />
     <ClCompile Include="D3DUtils.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Sample10_Instancing.cpp" />
     <ClCompile Include="Sample11_Frustum.cpp" />
     <ClCompile Include="Sample12_SkyBox.cpp" />
+    <ClCompile Include="Sample13_ShadowMap.cpp" />
     <ClCompile Include="Sample3_DrawShape.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InitDirect3DApp.cpp" />
@@ -289,6 +293,12 @@
       <FileType>Document</FileType>
     </CustomBuild>
     <CustomBuild Include="Shader\Sample11 CubeMap\skyBox.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample12 ShadowMap\simpleShadow.fx">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample12 ShadowMap\CreateShadowMap.fx">
       <FileType>Document</FileType>
     </CustomBuild>
   </ItemGroup>

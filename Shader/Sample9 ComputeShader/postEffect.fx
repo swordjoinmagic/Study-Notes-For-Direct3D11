@@ -26,7 +26,7 @@ v2f vert(a2v v){
 }
 
 float4 pixel(v2f i) : SV_Target{
-    return float4(1,1,1,1) - MainTex.Sample(SamplerState1,i.uv);    
+    return MainTex.Sample(SamplerState1,i.uv);
 }
 
 technique11{

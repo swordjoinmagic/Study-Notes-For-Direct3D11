@@ -6,13 +6,13 @@ void Sample12::OnStart() {
 	
 
 	// 初始化cubeMap
-	HR(D3DX11CreateShaderResourceViewFromFile(
-		md3dDevice,
-		L"Textures/snowcube1024.dds",
-		0,0,
-		cubeMapSRV.GetAddressOf(),
-		0
-	));
+	//HR(D3DX11CreateShaderResourceViewFromFile(
+	//	md3dDevice,
+	//	L"Textures/testCube1.dds",
+	//	0,0,
+	//	cubeMapSRV.GetAddressOf(),
+	//	0
+	//));
 
 	// 初始化Shader
 	boxShader = std::make_shared<Shader>(L"Shader/Sample5 Texture/Compiled/textureMap.fxo",md3dDevice);
@@ -20,6 +20,16 @@ void Sample12::OnStart() {
 
 	boxTexture = std::make_shared<Texture>(md3dDevice, L"Textures/Brick_Diffuse.JPG");
 
+	// 初始化CubeMap
+	std::vector<std::wstring> paths(6);
+	paths[0] = L"Textures/cubemap/posx.jpg";
+	paths[1] = L"Textures/cubemap/negx.jpg";
+	paths[2] = L"Textures/cubemap/posy.jpg";
+	paths[3] = L"Textures/cubemap/negy.jpg";
+	paths[4] = L"Textures/cubemap/posz.jpg";
+	paths[5] = L"Textures/cubemap/negz.jpg";
+	cubeMap = std::make_shared<CubeMap>(md3dDevice,md3dImmediateContext,paths);
+	cubeMap->CreateShaderResourceView(md3dDevice,cubeMapSRV.GetAddressOf());
 
 	// 初始化Mesh
 	GeometryGenerator::MeshData meshData;

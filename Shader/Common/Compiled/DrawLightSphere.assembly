@@ -98,7 +98,7 @@ fxgroup
                 dcl_output o0.xyzw
                 
                 #line 14 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Common\DrawLightSphere.fx"
-                mov o0.xyzw, l(1.000000,1.000000,1.000000,1.000000)  // frag<0: 1f,1: 1f,2: 1f,3: 1f>
+                mov o0.xyzw, l(1.000000,0,0,1.000000)  // frag<0: 1f,1: 0f,2: 0f,3: 1f>
                 ret 
                 // Approximately 2 instruction slots used
                             

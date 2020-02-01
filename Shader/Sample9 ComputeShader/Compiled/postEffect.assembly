@@ -105,14 +105,11 @@ fxgroup
                 dcl_resource_texture2d (float,float,float,float) t0
                 dcl_input_ps linear v1.xy
                 dcl_output o0.xyzw
-                dcl_temps 1
                 
                 #line 29 "D:\CPPInstance\LearnDirectX\LeranDirect3D11\LeranDirect3D11_WithConsole\Shader\Sample9 ComputeShader\postEffect.fx"
-                sample_indexable(texture2d)(float,float,float,float) r0.xyzw, v1.xyxx, t0.xyzw, s0
-                mov r0.xyzw, -r0.xyzw
-                add o0.xyzw, r0.xyzw, l(1.000000, 1.000000, 1.000000, 1.000000)  // pixel<0:Inf,1:Inf,2:Inf,3:Inf>
+                sample_indexable(texture2d)(float,float,float,float) o0.xyzw, v1.xyxx, t0.xyzw, s0  // pixel<0:Inf,1:Inf,2:Inf,3:Inf>
                 ret 
-                // Approximately 4 instruction slots used
+                // Approximately 2 instruction slots used
                             
             };
         }

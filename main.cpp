@@ -16,11 +16,12 @@
 #include "Sample10_Instancing.h"
 #include "Sample11_Frustum.h"
 #include "Sample12_SkyBox.h"
+#include "Sample13_ShadowMap.h"
 
 int main(){
 	
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample12 sample(hInstance);
+	Sample13 sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}

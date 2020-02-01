@@ -73,6 +73,9 @@
     <Filter Include="Shader\Sample11 CubeMap">
       <UniqueIdentifier>{12878985-5f98-486f-b7b7-039b81ecad4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader\Sample12 ShadowMap">
+      <UniqueIdentifier>{41c3c83e-b041-4fec-b9b1-6783455144e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -159,6 +162,12 @@
     <ClInclude Include="Sample12_SkyBox.h">
       <Filter>头文件\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="CubeMap.h">
+      <Filter>头文件\d3dFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample13_ShadowMap.h">
+      <Filter>头文件\Sample</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -236,6 +245,12 @@
     <ClCompile Include="Sample12_SkyBox.cpp">
       <Filter>源文件\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="CubeMap.cpp">
+      <Filter>源文件\d3dFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample13_ShadowMap.cpp">
+      <Filter>源文件\Sample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Shader\Sample3 DrawShape\drawCylinder.fx">
@@ -273,6 +288,12 @@
     </CustomBuild>
     <CustomBuild Include="Shader\Sample11 CubeMap\skyBox.fx">
       <Filter>Shader\Sample11 CubeMap</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample12 ShadowMap\simpleShadow.fx">
+      <Filter>Shader\Sample12 ShadowMap</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Shader\Sample12 ShadowMap\CreateShadowMap.fx">
+      <Filter>Shader\Sample12 ShadowMap</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
