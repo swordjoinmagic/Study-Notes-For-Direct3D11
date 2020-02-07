@@ -3,7 +3,7 @@
 #include "D3DUtils.h"
 
 class Texture {
-public:
+public:	
 	Texture(ID3D11Device* device,LPCWSTR filePath);
 	~Texture();	
 	ID3D11ShaderResourceView* shaderResourceView = nullptr;

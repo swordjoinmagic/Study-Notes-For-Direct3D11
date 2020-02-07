@@ -37,6 +37,7 @@ private:
 	// 平行光光源
 	Light light;
 
+	float bias = 0.005f;
 	
 public:
 	Sample13(HINSTANCE hInstance) : D3DApp(hInstance){}

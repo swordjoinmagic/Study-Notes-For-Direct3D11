@@ -18,11 +18,12 @@
 #include "Sample12_SkyBox.h"
 #include "Sample13_ShadowMap.h"
 #include "Sample14_Projector.h"
+#include "Sample15_ChidTranslationTest.h"
 
 int main(){
 	
 	HINSTANCE hInstance = GetModuleHandle(0);
-	Sample14 sample(hInstance);
+	Sample11 sample(hInstance);
 	if (!sample.Init()) {
 		std::cout << "应用程序初始化错误!!!" << std::endl;
 	}

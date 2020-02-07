@@ -156,6 +156,7 @@ void Sample13::Render() {
 	shader->SetFloat4("specularColor",float4(1,1,1,1));
 	shader->SetRawValue("light", &light, sizeof(Light));
 	shader->SetFloat3("viewPos", camera->pos);
+	shader->SetFloat("bias",bias);
 
 
 	RenderScene(view,proj,shader.get(),shaderIL.Get());
@@ -176,6 +177,13 @@ void Sample13::RenderSceneToCreateShadowMap(XMMATRIX view,XMMATRIX proj) {
 	createShadowMapShader->SetMatrix4x4("mvp", mvp);
 	createShadowMapShader->SetTexture2D("MainTex",*boxTexture);
 
+	boxMesh->Draw(*createShadowMapShader, md3dImmediateContext, createShadowMapShaderIL.Get());
+
+	XMMATRIX box2Model = XMMatrixScaling(1, 1, 1) *  XMMatrixRotationY(MathF::Radians(30)) * XMMatrixTranslation(1, 0.5f, 0);
+	mvp = box2Model * view * proj;
+
+	createShadowMapShader->SetMatrix4x4("mvp", mvp);
+	
 	boxMesh->Draw(*createShadowMapShader, md3dImmediateContext, createShadowMapShaderIL.Get());
 }
 
@@ -224,7 +232,19 @@ void Sample13::RenderScene(XMMATRIX LightView, XMMATRIX LightProj,Shader* shader
 
 	boxMesh->Draw(*shader, md3dImmediateContext,inputLayout);
 
+	XMMATRIX box2Model = XMMatrixScaling(1, 1, 1) *  XMMatrixRotationY(MathF::Radians(30)) * XMMatrixTranslation(1, 0.5f, 0);
+	mvp = box2Model * view * proj;
+	A = box2Model;
+	A.r[3] = XMVectorSet(0, 0, 0, 1.0f);
+	det = XMMatrixDeterminant(A);
+	transInvModel = XMMatrixTranspose(XMMatrixInverse(&det, A));
 
+	shader->SetMatrix4x4("model", box2Model);
+	shader->SetMatrix4x4("mvp", mvp);
+	shader->SetMatrix4x4("transInvModel", transInvModel);
+	shader->SetTexture2D("mainTex", *boxTexture);
+
+	boxMesh->Draw(*shader, md3dImmediateContext, inputLayout);
 }
 
 void Sample13::RenderOffScreen() {
@@ -234,7 +254,7 @@ void Sample13::RenderOffScreen() {
 	XMMATRIX mvp = view * proj;
 
 	postEffectShader->SetMatrix4x4("mvp",mvp);
-	postEffectShader->SetShaderResource("MainTex", offScreenTexSRV.Get());
+	postEffectShader->SetShaderResource("MainTex", shadowMapSRV.Get());
 	
 	quadMesh->Draw(*postEffectShader,md3dImmediateContext);
 }
@@ -251,5 +271,23 @@ void Sample13::UpdateScene(float deltaTime) {
 		XMMATRIX rotation = XMMatrixRotationY(deltaTime * 5);
 		temp = XMVector3Transform(temp, rotation);
 		XMStoreFloat3(&light.dir, temp);
+	}
+	if (GetAsyncKeyState(VK_KEY_Z)<0) {
+		light.pos.x -= 5 * deltaTime;
+	}
+	if (GetAsyncKeyState(VK_KEY_X) < 0) {
+		light.pos.x += 5 * deltaTime;
+	}
+	if (GetAsyncKeyState(VK_KEY_C) < 0) {
+		light.pos.y -= 5 * deltaTime;
+	}
+	if (GetAsyncKeyState(VK_KEY_V) < 0) {
+		light.pos.y += 5 * deltaTime;
+	}
+	if (GetAsyncKeyState(VK_KEY_Q) < 0) {
+		bias += 0.01 * deltaTime;
+	}
+	if (GetAsyncKeyState(VK_KEY_E) < 0) {
+		bias -= 0.01 * deltaTime;
 	}
 }

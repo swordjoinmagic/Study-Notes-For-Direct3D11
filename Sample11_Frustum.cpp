@@ -109,8 +109,8 @@ void Sample11::UpdateScene(float deltaTime) {
 
 		// 将视椎体包围体变换到物体的模型空间
 		XNA::Frustum localSpaceFrustum;
-		XNA::TransformFrustum(&localSpaceFrustum,&frustumCollider,XMVectorGetX(scale),rotQuat,translation);
-		
+		XNA::TransformFrustum(&localSpaceFrustum,&frustumCollider,XMVectorGetX(scale),rotQuat,translation);				
+
 		// 如果发生碰撞,把物体的实例数据加入缓冲
 		if (XNA::IntersectSphereFrustum(&sphereCollider,&localSpaceFrustum)!=0) {
 			instanceBufferData[instancedCount++] = data[i];

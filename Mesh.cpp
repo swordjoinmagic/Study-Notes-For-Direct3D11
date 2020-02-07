@@ -103,4 +103,6 @@ void Mesh::DrawInstanced(const Shader& shader, ID3D11DeviceContext* deviceContex
 	shader.UsePass(0, deviceContext);
 
 	deviceContext->DrawIndexedInstanced(indices.size(),count,0,0,0);
+
+	
 }
